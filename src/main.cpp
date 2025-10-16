@@ -1,0 +1,111 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <regex>
+#include <algorithm>
+#include <cxxopts.hpp>
+#include <ftxui/dom/elements.hpp>
+#include <ftxui/screen/screen.hpp>
+#include "colorsys/options.h"
+#include "colorsys/tokenize.h"
+#include "colorsys/sanity.h"
+#include "colorsys/intermediateRep.h"
+#include "colorsys/engine.h"
+#include "colorsys/print.h"
+
+int main(int argc, char** argv) {
+
+    // Parser
+    cxxopts::ParseResult argumentResult {};
+    if (auto functionStatus = colorsys::programOptions(argc, argv); functionStatus) {
+        argumentResult = *functionStatus;
+    } else {
+        std::cout << "[-] Error occured while parsing arguments. Now signaling for a program exit. \n";
+        return 301;
+    }
+
+    // Tokenize
+    std::vector<int> argumentTokens {}; // mode, inputModel, outputModel
+    if (auto functionStatus = colorsys::argumentTokenize(argumentResult); functionStatus) {
+        argumentTokens = *functionStatus;
+    } else {
+        std::cout << "[-] Error occured while hashing values. Now signaling for a program exit.\n";
+        return 302;
+    }
+
+    // sanity check
+    // Needs heavy rewrite for cleaner and tolerable codebase
+    std::vector<int> inputColor {};
+    if (auto functionStatus = colorsys::inputSanity(argumentResult["input"].as<std::string>(), argumentTokens.at(1)); functionStatus) {
+        inputColor = *functionStatus;
+    } else {
+        std::cout << "[-] Sanity check failed. Please check your \"input\" argument and -i flag if they are correct. Now signaling for a program exit.\n";
+        return 303;
+    }
+    std::ranges::for_each(inputColor, [](const int& i) { std::cout << "Input: " << i << '\n'; });
+    
+
+    std::vector<int> irColor = colorsys::toIR(inputColor, argumentTokens[1]);
+    std::ranges::for_each(irColor, [](const int& i) { std::cout << "intermediate: " << i << '\n'; }); // [0]
+
+    
+    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0]);
+    std::ranges::for_each(irColor, [](const int& i) { std::cout << "function: " << i << '\n'; }); // [0]
+
+    colorsys::fromIR(outputColor, argumentTokens[2]);
+    std::cout << "Color Matrix:\n";
+    for (const std::vector<int>& vec : outputColor) {
+        std::cout << "\t";
+        for (const int& i : vec) {
+            std::cout << i << ", ";
+        }
+        std::cout << "\n";
+    }
+
+    colorsys::print(inputColor, outputColor, argumentTokens); // Can't display hex
+    
+
+    std::cout // [0]
+        << "\nmode = " << argumentResult["mode"].as<std::string>()
+        << "\ninput = " << argumentResult["input"].as<std::string>()
+        << "\ni = " << argumentResult["inputModel"].as<std::string>()
+        << "\no = " << argumentResult["outputModel"].as<std::string>()
+        << std::endl;
+        
+
+
+    return 0;
+}
+
+
+/**
+ * Checklist:
+ * Color mixing model converter [x]
+ *      RGB
+ *      CMY
+ *      Hex
+ * Color Harmonies [x]
+ *      Analogous
+ *      Complementary
+ * Color Variation Chart [x]
+ */
+
+/**
+ * Process
+ * input [/] -> parse [/] -> tokenize arguments [/] -> sanity checks [1] -> convert model to intermediate [1] -> function* [1] -> convert intermediate to model [1] -> output [1]
+ * 
+ * *convert function simple skips that
+ * **another sanity check will apply here
+ * 1: bare minimum implementation
+ */
+
+ /**
+  * Error Codes:
+  * 301: Parsing issue
+  * 302: Unrecognized mode/function
+  * 
+  * Info:
+  * [0]: Debug
+  */
