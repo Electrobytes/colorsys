@@ -44,26 +44,10 @@ int main(int argc, char** argv) {
         std::cout << "[-] Sanity check failed. Please check your \"input\" argument and -i flag if they are correct. Now signaling for a program exit.\n";
         return 303;
     }
-    std::ranges::for_each(inputColor, [](const int& i) { std::cout << "Input: " << i << '\n'; });
     
-
     std::vector<int> irColor = colorsys::toIR(inputColor, argumentTokens[1]);
-    std::ranges::for_each(irColor, [](const int& i) { std::cout << "intermediate: " << i << '\n'; }); // [0]
-
-    
     std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0]);
-    std::ranges::for_each(irColor, [](const int& i) { std::cout << "function: " << i << '\n'; }); // [0]
-
     colorsys::fromIR(outputColor, argumentTokens[2]);
-    std::cout << "Color Matrix:\n";
-    for (const std::vector<int>& vec : outputColor) {
-        std::cout << "\t";
-        for (const int& i : vec) {
-            std::cout << i << ", ";
-        }
-        std::cout << "\n";
-    }
-
     colorsys::print(inputColor, outputColor, argumentTokens); // Can't display hex
     
 
