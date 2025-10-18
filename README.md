@@ -1,18 +1,19 @@
 # Colorsys
 ## Color Theory in the cmd!
+<hr>
 
-### Libraries used
+## Libraries used
 - [ftxui](https://github.com/ArthurSonzogni/FTXUI)
 - [fmt](https://github.com/fmtlib/fmt)
 
-### Roadmap
-#### Input
+## Roadmap
+### Input
 
-- [x] rgb (0)
-- [ ] cmy (1)
+- [x] rgb
+- [ ] cmy
 - [ ] cmyk
-- [x] hex (2)
-- [ ] hsl (3)
+- [x] hex
+- [ ] hsl
 - [ ] hsv
 - [ ] lab
 - [ ] xyz
@@ -20,7 +21,7 @@
 - [ ] luv
 - [ ] hwb
 
-#### Output
+### Output
 
 - [x] rgb
 - [ ] cmy
@@ -34,7 +35,7 @@
 - [ ] luv
 - [ ] hwb
 
-#### Functions
+### Functions
 
 - [x] Complementary
 - [ ] Split Complementary
@@ -43,7 +44,7 @@
 - [ ] Tetradic
 - [ ] Square
 
-#### Programming
+### Programming
 - [x] Basic flow
 - [x] Case-insensitivity
 - [ ] Turn core library to source files (Framework for it, is done)
@@ -56,13 +57,9 @@
     - [ ] tokenize.h
 - [ ] Toggleable debug info
 - [ ] Color preview
-- [ ] Enum types
-- [ ] Enum functions
-- [x] Enum implementation
-    - [x] engine.h
-    - [x] intermediateRep.h
-    - [x] print.h
-    - [x] sanity.h
+- [x] Enum types
+- [x] Enum functions
+
 
 
 When I started creating this project, I didn't research a name for it; it simply popped up in my head, and when I found out that Python has a module with the same name and the same functionality, it was halfway done, so this name will probably stick here for a while.
