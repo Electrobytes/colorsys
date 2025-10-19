@@ -39,10 +39,14 @@
 
 - [x] Complementary
 - [ ] Split Complementary
+    - [ ] Spacing between the complementary and the splits (1)
 - [ ] Analogous
+    - [ ] Spacing between three colors (1)
 - [ ] Triadic
 - [ ] Tetradic
 - [ ] Square
+
+~(1) It can be changed using the magnitude flag (-m)~
 
 ### Programming
 - [x] Basic flow
@@ -59,6 +63,7 @@
 - [ ] Color preview
 - [x] Enum types
 - [x] Enum functions
+- [ ] Help option
 
 
 
