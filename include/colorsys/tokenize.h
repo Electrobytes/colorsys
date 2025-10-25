@@ -23,13 +23,13 @@ namespace colorsys {
     };
 
     namespace hashmaps {
-        std::unordered_map<std::string, int> modes = {
+        inline std::unordered_map<std::string, int> modes = {
             {"convert", 0},
             {"analogous", 1},
             {"complementary", 2}
         };
 
-        std::unordered_map<std::string, int> types = {
+        inline std::unordered_map<std::string, int> types = {
             {"rgb", 0},
             {"cmy", 1},
             {"hex", 2},
@@ -37,7 +37,7 @@ namespace colorsys {
         };
     }
 
-    std::optional<std::vector<int>> argumentTokenize(const cxxopts::ParseResult& argumentResults) {
+    inline std::optional<std::vector<int>> argumentTokenize(const cxxopts::ParseResult& argumentResults) {
         std::vector<int> result {};
 
         try {

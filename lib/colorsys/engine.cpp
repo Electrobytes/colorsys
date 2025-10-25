@@ -1,7 +1,4 @@
-#include <vector>
-#include <algorithm>
-#include <array>
-#include "tokenize.h"
+#include "engine.h"
 
 namespace colorsys {
     namespace engine {
