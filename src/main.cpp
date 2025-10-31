@@ -8,12 +8,12 @@
 #include <cxxopts.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/screen.hpp>
-#include "colorsys/options.h"
-#include "colorsys/tokenize.h"
-#include "colorsys/sanity.h"
-#include "colorsys/intermediateRep.h"
-#include "colorsys/engine.h"
-#include "colorsys/print.h"
+#include "options.h"
+#include "tokenize.h"
+#include "sanity.h"
+#include "intermediateRep.h"
+#include "engine.h"
+#include "print.h"
 
 int main(int argc, char** argv) {
 
