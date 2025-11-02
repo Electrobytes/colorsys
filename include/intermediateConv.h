@@ -8,34 +8,34 @@
 
 namespace colorsys::intermediate {
     namespace start {
-            void rgb(std::vector<int>& convert) {
-                std::vector<float> decimalRep(std::make_move_iterator(convert.begin()), std::make_move_iterator(convert.end()));
-                convert.clear();
+        void rgb(std::vector<int>& convert) {
+            std::vector<float> decimalRep(std::make_move_iterator(convert.begin()), std::make_move_iterator(convert.end()));
+            convert.clear();
 
-                float hue {}, sat {}, lum {};
-                
-                for (float& f : decimalRep) f /= 255.00;
-                std::vector<float>::iterator maxElement = std::ranges::max_element(decimalRep);
-                std::vector<float>::iterator minElement = std::ranges::min_element(decimalRep);
-                float rangeDelta = *maxElement - *minElement;
+            float hue {}, sat {}, lum {};
+            
+            for (float& f : decimalRep) f /= 255.00;
+            std::vector<float>::iterator maxElement = std::ranges::max_element(decimalRep);
+            std::vector<float>::iterator minElement = std::ranges::min_element(decimalRep);
+            float rangeDelta = *maxElement - *minElement;
 
-                // Luminace
-                lum = (*minElement + *maxElement) / 2;
-                convert.insert(convert.begin(), std::lround(lum * 100));
-
-
-                // Saturation
-                if (rangeDelta == 0) sat = 0;
-                else if (lum <= 0.5) sat = (*maxElement - *minElement) / (*maxElement + *minElement); // why tf this thing doesnt show a value
-                else if (lum > 0.5) sat = (*maxElement - *minElement) / (2.00 - *maxElement - *minElement);
-                convert.insert(convert.begin(), std::lround(sat * 100));
+            // Luminace
+            lum = (*minElement + *maxElement) / 2;
+            convert.insert(convert.begin(), std::lround(lum * 100));
 
 
-                // Hue
-                if (std::distance(decimalRep.begin(), maxElement) == 0) hue = (decimalRep.at(1) - decimalRep.at(2)) / (*maxElement - *minElement);
-                else if (std::distance(decimalRep.begin(), maxElement) == 1) hue = 2.00 + (decimalRep.at(2) - decimalRep.at(0)) / (*maxElement - *minElement);
-                else if (std::distance(decimalRep.begin(), maxElement) == 2) hue = 4.00 + (decimalRep.at(0) - decimalRep.at(1)) / (*maxElement - *minElement);
-                convert.insert(convert.begin(), std::lround(hue * 60));
+            // Saturation
+            if (rangeDelta == 0) sat = 0;
+            else if (lum <= 0.5) sat = (*maxElement - *minElement) / (*maxElement + *minElement); // why tf this thing doesnt show a value
+            else if (lum > 0.5) sat = (*maxElement - *minElement) / (2.00 - *maxElement - *minElement);
+            convert.insert(convert.begin(), std::lround(sat * 100));
+
+
+            // Hue
+            if (std::distance(decimalRep.begin(), maxElement) == 0) hue = (decimalRep.at(1) - decimalRep.at(2)) / (*maxElement - *minElement);
+            else if (std::distance(decimalRep.begin(), maxElement) == 1) hue = 2.00 + (decimalRep.at(2) - decimalRep.at(0)) / (*maxElement - *minElement);
+            else if (std::distance(decimalRep.begin(), maxElement) == 2) hue = 4.00 + (decimalRep.at(0) - decimalRep.at(1)) / (*maxElement - *minElement);
+            convert.insert(convert.begin(), std::lround(hue * 60));
 
         }
     }
