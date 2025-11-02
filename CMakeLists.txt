@@ -12,4 +12,22 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out/lib")
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
-include("${CMAKE_SOURCE_DIR}/src/CMakeLists.txt")
+
+project(engine)
+project(colorsys)
+
+find_package(ftxui REQUIRED)
+find_package(fmt REQUIRED)
+
+add_library(engine STATIC
+    "${CMAKE_CURRENT_LIST_DIR}/src/engine.cpp"
+)
+
+add_executable(colorsys "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp")
+
+target_link_libraries(colorsys
+    ftxui::screen
+    ftxui::dom
+    fmt::fmt
+    engine
+)
