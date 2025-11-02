@@ -10,5 +10,5 @@ namespace colorsys {
     namespace engine {
         std::vector<std::vector<int>> complementary(const std::vector<int>& inputColor);
     }
-    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues, const int& selectedMode);
+    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues, const int& selectedMode, int magnitude);
 }

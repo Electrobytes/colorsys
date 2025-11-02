@@ -17,8 +17,9 @@ namespace colorsys {
             ("o,outputModel", "Color mixing model for the output. Default value is matched to the -i,--inputModel flag, but using the \"convert\" function will make this flag the basis for the output.", cxxopts::value<std::string>());
 
         programFlags.add_options("Additional options")
-            ("m,magnitude", "The intensity/magnitude of results", cxxopts::value<int>()->implicit_value("0"))
-            ("h,help", "Prints the help message and exits");
+            ("m,magnitude", "The intensity/magnitude of results", cxxopts::value<int>()->default_value("0"))
+            ("h,help", "Prints the help message and exits")
+            ("d,debug", "Show unformatted results for debugging", cxxopts::value<bool>());
 
         programFlags.parse_positional({"mode", "input"});
 

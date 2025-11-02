@@ -46,18 +46,20 @@ int main(int argc, char** argv) {
     }
     
     std::vector<int> irColor = colorsys::toIR(inputColor, argumentTokens[1]);
-    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0]);
+    int functionMagnitude = argumentResult["magnitude"].as<int>();
+    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0], functionMagnitude);
     colorsys::fromIR(outputColor, argumentTokens[2]);
-    colorsys::print(inputColor, outputColor, argumentTokens); // Can't display hex
+    colorsys::print(inputColor, outputColor, argumentTokens);
     
-
-    std::cout // [0]
-        << "\nmode = " << argumentResult["mode"].as<std::string>()
-        << "\ninput = " << argumentResult["input"].as<std::string>()
-        << "\ni = " << argumentResult["inputModel"].as<std::string>()
-        << "\no = " << argumentResult["outputModel"].as<std::string>()
-        << std::endl;
-        
+    if (argumentResult["debug"].as<bool>()) {
+        std::cout // [0]
+            << "\nmode = " << argumentResult["mode"].as<std::string>()
+            << "\ninput = " << argumentResult["input"].as<std::string>()
+            << "\nmagnitude = " << argumentResult["magnitude"].as<int>()
+            << "\ni = " << argumentResult["inputModel"].as<std::string>()
+            << "\no = " << argumentResult["outputModel"].as<std::string>()
+            << std::endl;
+    }        
 
 
     return 0;

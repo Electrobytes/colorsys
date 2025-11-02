@@ -21,7 +21,7 @@ namespace colorsys {
         }
     }
 
-    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues, const int& selectedMode) {
+    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues, const int& selectedMode, int magnitude) {
         switch (selectedMode) {
             case colorsys::m_convert:
                 return { intermediateValues };
