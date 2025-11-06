@@ -20,7 +20,8 @@ find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
 
 add_library(engine STATIC
-    "${CMAKE_CURRENT_LIST_DIR}/src/engine.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/src/engine/complementary.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/src/engine/handler.cpp"
 )
 
 add_executable(colorsys "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp")
