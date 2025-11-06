@@ -22,6 +22,7 @@ find_package(fmt REQUIRED)
 
 add_library(engine STATIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/complementary.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/analogous.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/handler.cpp"
 )
 
