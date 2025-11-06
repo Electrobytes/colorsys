@@ -1,9 +1,5 @@
-#pragma once
-
 #include <vector>
-#include <string>
-#include <algorithm>
-#include "intermediateConv.h"
+#include "intermediate.h"
 #include "tokenize.h"
 
 namespace colorsys {

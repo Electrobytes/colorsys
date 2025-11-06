@@ -14,21 +14,28 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out/lib")
 include_directories("${CMAKE_SOURCE_DIR}/include")
 
 project(engine)
+project(ir)
 project(colorsys)
 
 find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
 
 add_library(engine STATIC
-    "${CMAKE_CURRENT_LIST_DIR}/src/engine/complementary.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/src/engine/handler.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/complementary.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/handler.cpp"
 )
 
-add_executable(colorsys "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp")
+add_library(ir STATIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/rgb.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/handler.cpp"
+)
+
+add_executable(colorsys "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 
 target_link_libraries(colorsys
     ftxui::screen
     ftxui::dom
     fmt::fmt
     engine
+    ir
 )
