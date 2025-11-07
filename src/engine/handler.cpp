@@ -9,6 +9,9 @@ namespace colorsys {
 
             case colorsys::m_complementary:
                 return engine::complementary(intermediateValues);
+            
+            case colorsys::m_analogous:
+                return engine::analogous(intermediateValues, magnitude);
         }
 
         return {{420}}; // There's no color model/system that would reach number 420 so that's prolly a good placeholder for a while
