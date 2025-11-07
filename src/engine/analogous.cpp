@@ -1,6 +1,6 @@
 #include "engine.h"
 #include <algorithm>
-#include <iterator>
+#include <cmath>
 
 namespace colorsys::engine {
     std::vector<std::vector<int>> analogous(const std::vector<int>& inputColor, int magnitude) {
@@ -11,7 +11,7 @@ namespace colorsys::engine {
         result.at(1).at(0) += magnitude;
 
         for (std::vector<int>& vec : result) {
-            vec.at(0) %= 360;
+            vec.at(0) = (vec.at(0) % 360 + 360) % 360;
         }
 
         return result;
