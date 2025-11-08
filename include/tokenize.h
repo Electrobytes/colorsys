@@ -19,21 +19,23 @@ namespace colorsys {
         t_rgb = 0,
         t_cmy = 1,
         t_hex = 2,
-        t_hsl = 3
+        t_hsl = 3,
+        t_hsv = 4
     };
 
     namespace hashmaps {
-        inline std::unordered_map<std::string, int> modes = {
+        inline const std::unordered_map<std::string, int> modes = {
             {"convert", 0},
             {"analogous", 1},
             {"complementary", 2}
         };
 
-        inline std::unordered_map<std::string, int> types = {
+        inline const std::unordered_map<std::string, int> types = {
             {"rgb", 0},
             {"cmy", 1},
             {"hex", 2},
-            {"hsl", 3}
+            {"hsl", 3},
+            {"hsv", 4}
         };
     }
 

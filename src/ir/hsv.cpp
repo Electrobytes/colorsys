@@ -1,0 +1,22 @@
+#include <vector>
+#include <cmath>
+
+// broken af
+namespace colorsys::intermediate {
+    namespace start {
+        void hsv(std::vector<int>& convert) {
+            int value = convert.at(2);
+            convert.at(2) *= 100 * (1 - 50 * convert.at(1));
+            if ((convert.at(2) == 0) || (convert.at(2) == 1)) convert.at(1) = 0;
+            else {
+                convert.at(1) = (100 * value - convert.at(2)) / std::min(convert.at(2), 1 - convert.at(2));
+            }
+        }
+    }
+
+    namespace finish {
+        void hsv(std::vector<int>& convert) {
+            convert.at(2) = 100 * (convert.at(2) + (convert.at(1) * std::min(100 * convert.at(2), 1 - 100 * convert.at(2))));
+        }
+    }
+}

@@ -14,6 +14,8 @@ namespace colorsys {
                 break;
             case colorsys::t_hsl:
                 break; // Cuz hsl is the intermediate value
+            case colorsys::t_hsv:
+                colorsys::intermediate::start::hsv(result);
                 
         }
 
@@ -28,6 +30,8 @@ namespace colorsys {
                     colorsys::intermediate::finish::rgb(vec);
                 case colorsys::t_hsl:
                     break; // Cuz the intermediate representation is already in hsl
+                case colorsys::t_hsv:
+                    colorsys::intermediate::finish::hsv(vec);
 
             }
         }
