@@ -6,10 +6,13 @@ namespace colorsys::intermediate {
     namespace start {
         void hsv(std::vector<int>& convert) {
             int value = convert.at(2);
-            convert.at(2) *= 100 * (1 - 50 * convert.at(1));
-            if ((convert.at(2) == 0) || (convert.at(2) == 1)) convert.at(1) = 0;
+            convert.at(2) = (200 * value) - (convert.at(1) * value);
+            convert.at(2) /= 20000;
+            if ((convert.at(2) == 0) || (convert.at(2) == 100)) convert.at(1) = 0;
             else {
-                convert.at(1) = (100 * value - convert.at(2)) / std::min(convert.at(2), 1 - convert.at(2));
+                float lumDecimal = convert.at(2) / 100;
+                convert.at(1) = value - convert.at(2);
+                convert.at(1) /= 100 * std::min(lumDecimal, 1 - lumDecimal);
             }
         }
     }
