@@ -8,11 +8,15 @@ namespace colorsys::intermediate {
             convert.at(2) = (200 * value) - (convert.at(1) * value);
             convert.at(2) /= 200;
             if ((convert.at(2) == 0) || (convert.at(2) == 100)) convert.at(1) = 0;
-            else { // All of them are broken :<
-                /*
+            else {
+                /* this was a supposed fix
                 convert.at(1) = value - convert.at(2);
                 convert.at(1) /= std::min(convert.at(2) / 100, (100 - convert.at(2)) / 100);
-                */ // No implementation yet
+                */
+                float valueDec = value / 100.0;
+                float luminDec = convert.at(2) / 100.0;
+
+                convert.at(1) = 100 * ((valueDec - luminDec) / std::min(luminDec, 1 - luminDec));
             }
         }
     }
