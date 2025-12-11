@@ -20,16 +20,14 @@ namespace colorsys::intermediate {
             }
         }
     }
-    // TODO: rewrite whatever the hell is this
     namespace finish {
         void hsv(std::vector<int>& convert) {
             int lum = convert.at(2);
-            convert.at(2) = lum + convert.at(1) * std::min(lum / 100, 1 - (lum / 100));
-            convert.at(2) /= 100;
+            convert.at(2) = lum + convert.at(1) * std::min(lum / 100.0, 1 - (lum / 100.0));
 
             if (convert.at(2) == 0) convert.at(1) = 0;
             else {
-                convert.at(1) = 200 * (1 - (lum / convert.at(2)));
+                convert.at(1) = 200 * (1 - (lum / convert.at(2))); // idk why it is overshooting for sum reason
             }
         }
     }
