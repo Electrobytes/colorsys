@@ -13,8 +13,8 @@
 - [ ] cmy
 - [ ] cmyk
 - [x] hex
-- [ ] hsl
-- [ ] hsv
+- [x] hsl
+- [x] hsv
 - [ ] lab
 - [ ] xyz
 - [ ] lch
@@ -28,7 +28,7 @@
 - [ ] cmyk
 - [x] hex
 - [x] hsl
-- [ ] hsv
+- [x] hsv
 - [ ] lab
 - [ ] xyz
 - [ ] lch
@@ -38,9 +38,9 @@
 ### Functions
 
 - [x] Complementary
-- [ ] Split Complementary
-    - [ ] Spacing between the complementary and the splits (1)
-- [ ] Analogous
+- [ ] Split Complementary (testing phase)
+    - [x] Spacing between the complementary and the splits (1)
+- [x] Analogous
     - [ ] Spacing between three colors (1)
 - [ ] Triadic
 - [ ] Tetradic
