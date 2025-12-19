@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <utility>
 #include <fmt/core.h>
 #include <fmt/ranges.h>
 #include <ftxui/dom/elements.hpp>
@@ -52,7 +53,7 @@ namespace colorsys {
         formattedMetadata.at(3) = ftxui::text(metadata.at(1));
         formattedMetadata.at(4) = ftxui::text(metadata.at(2));
 
-        
+        /*
         ftxui::Element document = ftxui::vbox({
             ftxui::window(ftxui::text("Input"), formattedMetadata.at(1)),
             ftxui::window(ftxui::text("Function/Mode"), formattedMetadata.at(0)),
@@ -61,6 +62,17 @@ namespace colorsys {
                ftxui::window(ftxui::text("Input type"), formattedMetadata.at(3)),
                ftxui::window(ftxui::text("Output type"), formattedMetadata.at(4)) 
             }))
+        });
+        */
+
+        ftxui::Element document = ftxui::gridbox({
+            {ftxui::window(ftxui::text("Input"), formattedMetadata.at(1))},
+            {ftxui::window(ftxui::text("Function/Mode"), formattedMetadata.at(0))},
+            {ftxui::window(ftxui::text("Output/s"), formattedMetadata.at(2))},
+            {ftxui::window(ftxui::text("I/O types"), ftxui::hbox({
+                ftxui::window(ftxui::text("Input type"), formattedMetadata.at(3)),
+                ftxui::window(ftxui::text("Output type"), formattedMetadata.at(4))
+            }))}
         });
 
         ftxui::Screen printer = ftxui::Screen::Create(ftxui::Dimension::Fit(document), ftxui::Dimension::Fit(document, true));
