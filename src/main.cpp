@@ -47,6 +47,7 @@ int main(int argc, char** argv) {
     
     std::vector<int> irColor = colorsys::toIR(inputColor, argumentTokens[1]);
     int functionMagnitude = argumentResult["magnitude"].as<int>();
+    int functionOutputRange = argumentResult["range"].as<int>();
     std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0], functionMagnitude);
     colorsys::fromIR(outputColor, argumentTokens[2]);
     colorsys::print(inputColor, outputColor, argumentTokens);
