@@ -12,6 +12,10 @@ namespace colorsys {
             
             case colorsys::m_analogous:
                 return engine::analogous(intermediateValues, magnitude);
+            
+            
+            case colorsys::m_shade:
+                return engine::shade(intermediateValues, magnitude);
         }
 
         return {{420}}; // There's no color model/system that would reach number 420 so that's prolly a good placeholder for a while
