@@ -9,6 +9,9 @@ namespace colorsys {
 
             case colorsys::m_complementary:
                 return engine::complementary(intermediateValues);
+
+            case colorsys::m_split_complementary:
+                return engine::split_complementary(intermediateValues, magnitude);
             
             case colorsys::m_analogous:
                 return engine::analogous(intermediateValues, magnitude);
