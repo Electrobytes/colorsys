@@ -1,6 +1,15 @@
 # Colorsys
-## Color Theory in the cmd!
-<hr>
+Color Theory in the cmd!
+
+## Features
+- Convert between color systems (rgb, hsl, hex, and etc.)
+- Generate color harmonies (complementary, analogous, and etc.)
+- Adjust color mixtures (tint, shade, and etc.)
+
+## Usage
+```
+colorsys <mode> "<color code>" -m <magnitude, intensity> -r <range> -i <input type> -o <output type>
+```
 
 ## Libraries used
 - [ftxui](https://github.com/ArthurSonzogni/FTXUI)
