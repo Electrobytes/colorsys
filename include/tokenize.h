@@ -14,7 +14,8 @@ namespace colorsys {
         m_analogous = 1,
         m_complementary = 2,
         m_split_complementary = 3,
-        m_shade = 20
+        m_shade = 20,
+        m_tint = 21
     };
 
     enum typeRef {
@@ -31,7 +32,8 @@ namespace colorsys {
             {"analogous", 1},
             {"complementary", 2},
             {"split_complementary", 3},
-            {"shade", 20}
+            {"shade", 20},
+            {"tint", 21}
         };
 
         inline const std::unordered_map<std::string, int> types = {

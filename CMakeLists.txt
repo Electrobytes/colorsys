@@ -25,6 +25,7 @@ add_library(engine STATIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/analogous.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/handler.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/shade.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tint.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/split_complementary.cpp"
 )
 
