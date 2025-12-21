@@ -27,7 +27,7 @@ namespace colorsys::intermediate {
 
             if (convert.at(2) == 0) convert.at(1) = 0;
             else {
-                convert.at(1) = 200 * (1 - (lum / convert.at(2))); // idk why it is overshooting for sum reason
+                convert.at(1) = 200 * (1 - (lum / convert.at(2))); // hmmm good enough
             }
         }
     }
