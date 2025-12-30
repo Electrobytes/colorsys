@@ -7,7 +7,7 @@ namespace colorsys::engine {
         std::vector<std::vector<int>> outputColors {};
         for (int i = 1; i <= range; i++) {
             outputColors.push_back(inputColor);
-            outputColors.at(i-1).at(2) -= magnitude * i;
+            outputColors.at(i-1).at(2) += magnitude * i;
         }
 
         return outputColors;
