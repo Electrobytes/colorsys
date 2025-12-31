@@ -32,6 +32,7 @@ namespace colorsys {
             {"analogous", 1},
             {"complementary", 2},
             {"split_complementary", 3},
+            {"square", 4},
             {"shade", 20}
         };
 
