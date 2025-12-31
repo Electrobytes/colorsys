@@ -8,6 +8,10 @@ namespace colorsys::engine {
         for (int i = 1; i <= range; i++) {
             outputColors.push_back(inputColor);
             outputColors.at(i-1).at(2) += magnitude * i;
+            if (outputColors.at(i-1).at(2) <= 0) {
+                outputColors.at(i-1).at(2) = 100;
+                break;
+            }
         }
 
         return outputColors;
