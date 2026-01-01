@@ -21,7 +21,7 @@ namespace colorsys {
                 return engine::shade(intermediateValues, magnitude, range);
 
             case colorsys::m_tint:
-                return engine::shade(intermediateValues, magnitude, range);
+                return engine::tint(intermediateValues, magnitude, range);
         }
 
         return {{420}}; // There's no color model/system that would reach number 420 so that's prolly a good placeholder for a while
