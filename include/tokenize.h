@@ -14,6 +14,7 @@ namespace colorsys {
         m_analogous = 1,
         m_complementary = 2,
         m_split_complementary = 3,
+        m_square = 4,
         m_shade = 20
     };
 
@@ -31,6 +32,7 @@ namespace colorsys {
             {"analogous", 1},
             {"complementary", 2},
             {"split_complementary", 3},
+            {"square", 4},
             {"shade", 20}
         };
 
