@@ -45,10 +45,10 @@ int main(int argc, char** argv) {
         return 303;
     }
     
-    std::vector<int> irColor = colorsys::toIR(inputColor, argumentTokens[1]);
+    std::vector<int> ColorIr = colorsys::toIR(inputColor, argumentTokens[1]);
     int functionMagnitude = argumentResult["magnitude"].as<int>();
-    int functionOutputRange = argumentResult["range"].as<int>();
-    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(irColor, argumentTokens[0], functionMagnitude, functionOutputRange);
+    int functionRange = argumentResult["range"].as<int>();
+    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(ColorIr, argumentTokens[0], functionMagnitude, functionRange);
     colorsys::fromIR(outputColor, argumentTokens[2]);
     colorsys::print(inputColor, outputColor, argumentTokens);
     
