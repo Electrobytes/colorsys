@@ -5,7 +5,6 @@ namespace colorsys::engine {
         if (magnitude == 0) magnitude = 42;
 
         int complementaryColor = inputColor.at(0) + 180;
-        int rotationCase = complementaryColor % 360;
 
         std::vector<std::vector<int>> result(2, inputColor);
         result.at(0).at(0) = complementaryColor - magnitude;
