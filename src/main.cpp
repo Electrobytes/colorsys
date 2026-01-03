@@ -35,8 +35,7 @@ int main(int argc, char** argv) {
         return 302;
     }
 
-    // sanity check
-    // Needs heavy rewrite for cleaner and tolerable codebase
+    // Sanity check
     std::vector<int> inputColor {};
     if (auto functionStatus = colorsys::inputSanity(argumentResult["input"].as<std::string>(), argumentTokens.at(1)); functionStatus) {
         inputColor = *functionStatus;
@@ -53,7 +52,7 @@ int main(int argc, char** argv) {
     colorsys::print(inputColor, outputColor, argumentTokens);
     
     if (argumentResult["debug"].as<bool>()) {
-        std::cout // [0]
+        std::cout // Debug
             << "\nmode = " << argumentResult["mode"].as<std::string>()
             << "\ninput = " << argumentResult["input"].as<std::string>()
             << "\nmagnitude = " << argumentResult["magnitude"].as<int>()
@@ -93,6 +92,4 @@ int main(int argc, char** argv) {
   * 301: Parsing issue
   * 302: Unrecognized mode/function
   * 
-  * Info:
-  * [0]: Debug
   */
