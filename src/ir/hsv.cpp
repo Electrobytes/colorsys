@@ -27,7 +27,7 @@ namespace colorsys::intermediate {
 
             if (convert.at(2) == 0) convert.at(1) = 0;
             else {
-                convert.at(1) = 200 * (1 - (lum / convert.at(2))); // hmmm good enough
+                convert.at(1) = 200.0 * (1.0 - (static_cast<float>(lum) / static_cast<float>(convert.at(2))));
             }
         }
     }
