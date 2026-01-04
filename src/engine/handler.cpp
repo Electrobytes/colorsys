@@ -16,12 +16,14 @@ namespace colorsys {
             case colorsys::m_analogous:
                 return engine::analogous(intermediateValues, magnitude);
             
+            case colorsys::m_square:
+                return engine::square(intermediateValues);
+
+            case colorsys::m_triadic:
+                return engine::triadic(intermediateValues);
             
             case colorsys::m_shade:
                 return engine::shade(intermediateValues, magnitude, range);
-
-            case colorsys::m_square:
-                return engine::square(intermediateValues);
 
             case colorsys::m_tint:
                 return engine::tint(intermediateValues, magnitude, range);

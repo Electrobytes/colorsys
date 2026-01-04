@@ -28,6 +28,7 @@ add_library(engine STATIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tint.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/split_complementary.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/square.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/triadic.cpp"
 )
 
 add_library(ir STATIC

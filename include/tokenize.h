@@ -15,6 +15,7 @@ namespace colorsys {
         m_complementary = 2,
         m_split_complementary = 3,
         m_square = 4,
+        m_triadic = 5,
         m_shade = 20,
         m_tint = 21
     };
@@ -34,6 +35,7 @@ namespace colorsys {
             {"complementary", 2},
             {"split_complementary", 3},
             {"square", 4},
+            {"triadic", 5},
             {"shade", 20},
             {"tint", 21}
         };
