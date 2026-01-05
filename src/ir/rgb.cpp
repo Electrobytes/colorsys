@@ -24,15 +24,18 @@ namespace colorsys::intermediate {
 
             // Saturation
             if (rangeDelta == 0) sat = 0;
-            else if (lum <= 0.5) sat = (*maxElement - *minElement) / (*maxElement + *minElement); // why tf this thing doesnt show a value
+            else if (lum <= 0.5) sat = (*maxElement - *minElement) / (*maxElement + *minElement); 
             else if (lum > 0.5) sat = (*maxElement - *minElement) / (2.00 - *maxElement - *minElement);
             convert.insert(convert.begin(), std::lround(sat * 100));
 
 
             // Hue
-            if (std::distance(decimalRep.begin(), maxElement) == 0) hue = (decimalRep.at(1) - decimalRep.at(2)) / (*maxElement - *minElement);
-            else if (std::distance(decimalRep.begin(), maxElement) == 1) hue = 2.00 + (decimalRep.at(2) - decimalRep.at(0)) / (*maxElement - *minElement);
-            else if (std::distance(decimalRep.begin(), maxElement) == 2) hue = 4.00 + (decimalRep.at(0) - decimalRep.at(1)) / (*maxElement - *minElement);
+            if (std::distance(decimalRep.begin(), maxElement) == 0) { 
+                hue = std::fmod((decimalRep.at(1) - decimalRep.at(2)) / rangeDelta, 6); 
+                hue = 6.0 + std::fmod(-30.0, -6.0); // TODO: needs a rewrite
+            }
+            else if (std::distance(decimalRep.begin(), maxElement) == 1) hue = 2.00 + (decimalRep.at(2) - decimalRep.at(0)) / rangeDelta;
+            else if (std::distance(decimalRep.begin(), maxElement) == 2) hue = 4.00 + (decimalRep.at(0) - decimalRep.at(1)) / rangeDelta;
             convert.insert(convert.begin(), std::lround(hue * 60));
 
         }
@@ -40,7 +43,7 @@ namespace colorsys::intermediate {
 
     namespace finish {
         void rgb(std::vector<int>& convert) { 
-            // It's hella inacurrate, and defo need a fix.
+            
             
             float chroma = (1.00 - std::abs((convert.at(2) / 50.00) - 1.00)) * convert.at(1);
             chroma /= 100.00;
@@ -74,7 +77,7 @@ namespace colorsys::intermediate {
             }
 
             convert.clear();
-            for (float& f : formulatedValues) convert.push_back((f + lightnessMatch) * 255); // TODO: rounding
+            for (float& f : formulatedValues) convert.push_back(std::lroundf((f + lightnessMatch) * 255));
             
 
 
