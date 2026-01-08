@@ -32,7 +32,7 @@ namespace colorsys::intermediate {
             // Hue
             if (std::distance(decimalRep.begin(), maxElement) == 0) { 
                 hue = std::fmod((decimalRep.at(1) - decimalRep.at(2)) / rangeDelta, 6); 
-                hue = 6.0 + std::fmod(-30.0, -6.0); // TODO: needs a rewrite
+                hue = 6.0 + std::fmod(hue, -6.0); // There are some situations where it would input negative numbers after division
             }
             else if (std::distance(decimalRep.begin(), maxElement) == 1) hue = 2.00 + (decimalRep.at(2) - decimalRep.at(0)) / rangeDelta;
             else if (std::distance(decimalRep.begin(), maxElement) == 2) hue = 4.00 + (decimalRep.at(0) - decimalRep.at(1)) / rangeDelta;
