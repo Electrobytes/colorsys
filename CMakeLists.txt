@@ -33,6 +33,7 @@ add_library(engine STATIC
 
 add_library(ir STATIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/rgb.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/cmy.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/hsv.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/handler.cpp"
 )
