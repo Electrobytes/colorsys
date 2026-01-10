@@ -23,13 +23,7 @@ int main(int argc, char** argv) {
     else argumentResult = *functionStatus;
 
     // Tokenize
-    std::vector<int> argumentTokens {}; // mode, inputModel, outputModel
-    if (auto functionStatus = colorsys::argumentTokenize(argumentResult); functionStatus) {
-        argumentTokens = *functionStatus;
-    } else {
-        std::cout << "[-] Error occured while hashing values. Now signaling for a program exit.\n";
-        return 302;
-    }
+    std::vector<int> argumentTokens = colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel
 
     // Sanity check
     std::vector<int> inputColor {};

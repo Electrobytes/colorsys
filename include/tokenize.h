@@ -6,6 +6,7 @@
 #include <string_view>
 #include <vector>
 #include <unordered_map>
+#include <format>
 #include <cxxopts.hpp>
 
 namespace colorsys {
@@ -51,21 +52,40 @@ namespace colorsys {
         };
     }
 
-    inline std::optional<std::vector<int>> argumentTokenize(const cxxopts::ParseResult& argumentResults) {
-        std::vector<int> result {};
-
+    // TODO: do heavy refactor with the return type
+    inline std::vector<int> argumentTokenize(const cxxopts::ParseResult& argumentResults) { 
+        std::vector<int> tokenizedResult {};
+        std::array<std::string, 3> enteredValues {};
+        enteredValues.at(0) = argumentResults["mode"].as<std::string>();
+        enteredValues.at(1) = argumentResults["inputModel"].as<std::string>();
+        enteredValues.at(2) = argumentResults["outputModel"].as<std::string>();
+        int selector = 0;
         try {
-            result = {
-                hashmaps::modes.at(argumentResults["mode"].as<std::string>()),
-                hashmaps::types.at(argumentResults["inputModel"].as<std::string>()),
-                hashmaps::types.at(argumentResults["outputModel"].as<std::string>())
-            };
+            for (;selector < enteredValues.size(); selector++)
+                tokenizedResult.push_back(hashmaps::modes.at(enteredValues.at(selector));
+        }
+        catch (const std::out_of_range&) {
+            std::string namedParameter {};
+            switch (selector) {
+                case 0: 
+                    namedParameter = "function/mode";
+                    break;
+                case 1: 
+                    namedParameter = "input type";
+                    break;
+                case 2:
+                    namedParameter = "output type";
+                    break;
+                default:
+                    namedParameter = "unknown parameter";
+                    break;
+            }
 
-        } catch (const std::exception& caughtException) {
-            return std::nullopt;
+            throw std::invalid_argument(std::format("The {} \"{}\" does not exist, maybe a possible type?", namedParameter, enteredValues.at(selector)));
         }
 
-        return result;
+
+        return tokenizedResult;
     }
 
 
