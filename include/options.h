@@ -34,7 +34,10 @@ namespace colorsys {
             return std::nullopt;
         }
 
-        return result;
+        if (!result["help"].as<bool>()) return result;
+        std::cout << programFlags.help() << std::endl;
+
+        return std::nullopt;
         
     }
 }
