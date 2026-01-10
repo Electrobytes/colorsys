@@ -25,7 +25,8 @@ namespace colorsys {
         t_cmy = 1,
         t_hex = 2,
         t_hsl = 3,
-        t_hsv = 4
+        t_hsv = 4,
+        t_cmyk = 5
     };
 
     namespace hashmaps {
@@ -45,7 +46,8 @@ namespace colorsys {
             {"cmy", 1},
             {"hex", 2},
             {"hsl", 3},
-            {"hsv", 4}
+            {"hsv", 4},
+            {"cmyk", 5}
         };
     }
 

@@ -10,10 +10,9 @@
 namespace colorsys {
     std::optional<std::vector<int>> inputSanity(std::string colorInput, const int& inputType) {
         
-        colorInput.erase(std::remove(colorInput.begin(), colorInput.end(), ' '), colorInput.end()); // Time complexity: 2n, cuz it iterates twice
-        for (int i = 0; i < colorInput.size(); i++) {
-            colorInput.at(i) = std::tolower(colorInput.at(i));
-        }
+        std::erase(colorInput, ' ');
+        if (inputType == colorsys::t_hex) // skips the lowercase function if it's not a hex type
+            for (char& letter : colorInput) letter = std::tolower(letter);
 
         std::regex pattern("");
         std::smatch matcher {};
@@ -22,6 +21,10 @@ namespace colorsys {
             
             case colorsys::t_hex:
                 pattern = "(?:(?:0x|#)?)((?:[0-9]|[a-f]){2})((?:[0-9]|[a-f]){2})((?:[0-9]|[a-f]){2})";
+                break;
+
+            case colorsys::t_cmyk:
+                pattern = "([0-9]{1,3})(?:,)([0-9]{1,3})(?:,)([0-9]{1,3})(?:,)([0-9]{1,3})";
                 break;
 
             default:
