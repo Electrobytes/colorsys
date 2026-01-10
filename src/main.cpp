@@ -19,12 +19,8 @@ int main(int argc, char** argv) {
 
     // Parser
     cxxopts::ParseResult argumentResult {};
-    if (auto functionStatus = colorsys::programOptions(argc, argv); functionStatus) {
-        argumentResult = *functionStatus;
-    } else {
-        std::cout << "[-] Error occured while parsing arguments. Now signaling for a program exit. \n";
-        return 301;
-    }
+    if (auto functionStatus = colorsys::programOptions(argc, argv); !functionStatus) return 0;
+    else argumentResult = *functionStatus;
 
     // Tokenize
     std::vector<int> argumentTokens {}; // mode, inputModel, outputModel

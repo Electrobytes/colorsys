@@ -27,16 +27,10 @@ namespace colorsys {
 
         programFlags.parse_positional({"mode", "input"});
 
-        cxxopts::ParseResult result;
-        try {
-            result = programFlags.parse(argc, argv);
-        } catch (const cxxopts::exceptions::exception& caughtException) {
-            return std::nullopt;
-        }
+        cxxopts::ParseResult result = programFlags.parse(argc, argv);
 
         if (!result["help"].as<bool>()) return result;
         std::cout << programFlags.help() << std::endl;
-
         return std::nullopt;
         
     }
