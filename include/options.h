@@ -8,7 +8,7 @@ namespace colorsys {
     std::optional<cxxopts::ParseResult> programOptions(int& argc, char**& argv) {
         cxxopts::Options programFlags("colorsys", "Color Theory in the cmd!");
 
-        programFlags.add_options("General arguments")
+        programFlags.add_options("General")
             ("mode", "Choose what to do with the input.", cxxopts::value<std::string>())
             ("input", "Your color input.", cxxopts::value<std::string>());
 
@@ -20,7 +20,7 @@ namespace colorsys {
             ("m,magnitude", "The intensity/magnitude of results", cxxopts::value<int>()->default_value("0"))
             ("r,range", "The number of outputs to be displayed. Not all functions support this.", cxxopts::value<int>()->default_value("1"));
             
-        programFlags.add_options("Additional options")
+        programFlags.add_options("Additional")
             
             ("h,help", "Prints the help message and exits.")
             ("d,debug", "Show unformatted results for debugging.", cxxopts::value<bool>());
