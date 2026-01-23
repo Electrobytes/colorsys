@@ -8,7 +8,7 @@
 
 
 namespace colorsys {
-    std::optional<std::vector<int>> inputSanity(std::string colorInput, const int& inputType) {
+    std::vector<int> inputSanity(std::string colorInput, const int& inputType) {
         
         std::erase(colorInput, ' ');
         if (inputType == colorsys::t_hex) // skips the lowercase function if it's not a hex type
@@ -35,8 +35,7 @@ namespace colorsys {
         }
 
         if (bool sanityStatus = std::regex_match(colorInput, matcher, pattern); !sanityStatus) {
-            return std::nullopt;
-            
+            throw std::invalid_argument("The input entered does not fit well with the expected format of the given type.");
         }
 
         std::vector<std::string> captured(std::next(matcher.begin()), matcher.end());

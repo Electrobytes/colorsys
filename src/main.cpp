@@ -26,13 +26,7 @@ int main(int argc, char** argv) {
     std::vector<int> argumentTokens = colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel
 
     // Sanity check
-    std::vector<int> inputColor {};
-    if (auto functionStatus = colorsys::inputSanity(argumentResult["input"].as<std::string>(), argumentTokens.at(1)); functionStatus) {
-        inputColor = *functionStatus;
-    } else {
-        std::cout << "[-] Sanity check failed. Please check your \"input\" argument and -i flag if they are correct. Now signaling for a program exit.\n";
-        return 303;
-    }
+    std::vector<int> inputColor = colorsys::inputSanity(argumentResult["input"].as<std::string>(), argumentTokens.at(1));
     
     std::vector<int> ColorIr = colorsys::toIR(inputColor, argumentTokens[1]);
     int functionMagnitude = argumentResult["magnitude"].as<int>();
