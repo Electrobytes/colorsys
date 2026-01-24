@@ -61,10 +61,16 @@ namespace colorsys {
         enteredValues.at(2) = argumentResults["outputModel"].as<std::string>();
         int selector = 0;
         try {
+            /*
             tokenizedResult.push_back(hashmaps::modes.at(enteredValues.at(selector)));
             selector++; // why?!?!? // Seemed to have an issue here but haven't tested it
             for (selector = 1; selector < enteredValues.size(); selector++);
                 tokenizedResult.push_back(hashmaps::types.at(enteredValues.at(selector)));
+            */
+            for (; selector < enteredValues.size(); selector++) {
+                if (!selector) tokenizedResult.push_back(hashmaps::modes.at(enteredValues.at(selector)));
+                else tokenizedResult.push_back(hashmaps::types.at(enteredValues.at(selector)));
+            }
         }
         catch (const std::out_of_range&) {
             std::string namedParameter {};
