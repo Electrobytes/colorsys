@@ -19,7 +19,10 @@ namespace colorsys {
         m_square = 4,
         m_triadic = 5,
         m_shade = 20,
-        m_tint = 21
+        m_tint = 21,
+        m_temperature = 22,
+        m_colder = 220,
+        m_warmer = 221
     };
 
     enum typeRef {
@@ -40,7 +43,11 @@ namespace colorsys {
             {"square", 4},
             {"triadic", 5},
             {"shade", 20},
-            {"tint", 21}
+            {"tint", 21},
+            {"temp", 22},
+            {"temperature", 22},
+            {"colder", 220},
+            {"warmer", 221}
         };
 
         inline const std::unordered_map<std::string, int> types = {

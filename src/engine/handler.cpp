@@ -28,6 +28,11 @@ namespace colorsys {
 
             case colorsys::m_tint:
                 return engine::tint(intermediateValues, magnitude, range);
+            case colorsys::m_warmer:
+                magnitude *= -1;
+            case colorsys::m_colder:
+            case colorsys::m_temperature:
+                return engine::temperature(intermediateValues, magnitude, range);
         }
 
         std::cerr << "The function used is not yet implemented :(\n";
