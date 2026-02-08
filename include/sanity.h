@@ -35,7 +35,8 @@ namespace colorsys {
         }
 
         if (bool sanityStatus = std::regex_match(colorInput, matcher, pattern); !sanityStatus) {
-            throw std::invalid_argument("The input entered does not fit well with the expected format of the given type.");
+            std::cerr << std::format("The input entered does not fit well with the expected format of the given type.\n");
+            std::exit(302);
         }
 
         std::vector<std::string> captured(std::next(matcher.begin()), matcher.end());

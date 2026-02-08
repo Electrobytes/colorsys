@@ -18,9 +18,7 @@
 int main(int argc, char** argv) {
 
     // Parser
-    cxxopts::ParseResult argumentResult {};
-    if (auto functionStatus = colorsys::programOptions(argc, argv); !functionStatus) return 0;
-    else argumentResult = *functionStatus;
+    cxxopts::ParseResult argumentResult  = colorsys::programOptions(argc, argv);
 
     // Tokenize
     std::vector<int> argumentTokens = colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel

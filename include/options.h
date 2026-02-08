@@ -5,7 +5,7 @@
 #include <cxxopts.hpp>
 
 namespace colorsys {
-    std::optional<cxxopts::ParseResult> programOptions(int& argc, char**& argv) {
+    cxxopts::ParseResult programOptions(int& argc, char**& argv) {
         cxxopts::Options programFlags("colorsys", "Color Theory in the cmd!");
 
         programFlags.add_options("General")
@@ -31,7 +31,7 @@ namespace colorsys {
 
         if (!result["help"].as<bool>()) return result;
         std::cout << programFlags.help() << std::endl;
-        return std::nullopt;
+        std::exit(0);
         
     }
 }

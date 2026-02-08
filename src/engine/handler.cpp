@@ -30,6 +30,7 @@ namespace colorsys {
                 return engine::tint(intermediateValues, magnitude, range);
         }
 
-        throw std::logic_error("The function used is not yet defined :(");
+        std::cerr << "The function used is not yet implemented :(\n";
+        std::exit(303);
     }
 }

@@ -7,6 +7,7 @@
 #include <vector>
 #include <unordered_map>
 #include <format>
+#include <cstdlib>
 #include <cxxopts.hpp>
 
 namespace colorsys {
@@ -89,7 +90,8 @@ namespace colorsys {
                     break;
             }
 
-            throw std::invalid_argument(std::format("The {} \"{}\" does not exist, maybe a possible type?", namedParameter, enteredValues.at(selector)));
+            std::cerr << std::format("The {} \"{}\" does not exist, maybe a possible type?\n", namedParameter, enteredValues.at(selector));
+            std::exit(301);
         }
 
 
