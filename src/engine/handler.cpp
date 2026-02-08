@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <stdexcept>
 
 namespace colorsys {
 
@@ -29,6 +30,6 @@ namespace colorsys {
                 return engine::tint(intermediateValues, magnitude, range);
         }
 
-        return {{420}}; // There's no color model/system that would reach number 420 so that's prolly a good placeholder for a while
+        throw std::logic_error("The function used is not yet defined :(");
     }
 }
