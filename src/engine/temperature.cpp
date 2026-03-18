@@ -5,15 +5,14 @@
 namespace colorsys::engine {
     std::vector<std::vector<int>> temperature(const std::vector<int>& inputColor, int magnitude, int range) {
         std::vector<std::vector<int>> result {};
-        bool toWarmer = magnitude > 0;
+        bool toWarmer = magnitude < 0;
         magnitude = std::abs(magnitude);
         const int hottestHue = 0, coldestHue = 240;
         float incrementHue {};
         if (toWarmer) {
-            incrementHue = inputColor.at(0);
-            incrementHue *= -1;
+            incrementHue = inputColor.at(0) * -1;
             if (inputColor.at(0) >= 180) incrementHue += 360;
-            incrementHue /= 100.0 * magnitude;
+            incrementHue *= magnitude / 100.0;
         } else {
             incrementHue = (coldestHue - inputColor.at(0)) / 100.0 * magnitude;
         }
