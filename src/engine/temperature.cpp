@@ -11,7 +11,7 @@ namespace colorsys::engine {
         float incrementHue {};
         if (toWarmer) {
             incrementHue = inputColor.at(0) * -1;
-            if (inputColor.at(0) >= 180) incrementHue += 360;
+            if (inputColor.at(0) >= coldestHue) incrementHue += 360; // coldestHue is served as a pivot for the hue wheel
             incrementHue *= magnitude / 100.0;
         } else {
             incrementHue = (coldestHue - inputColor.at(0)) / 100.0 * magnitude;
