@@ -20,24 +20,28 @@ project(colorsys)
 find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
 
+set(COLORSYS_ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/engine")
+set(COLORSYS_CONVERTER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/ir")
+
 add_library(engine STATIC
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/complementary.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/analogous.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/handler.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/shade.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tint.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/split_complementary.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/square.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/triadic.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/temperature.cpp"
+    "${COLORSYS_ENGINE_DIR}/complementary.cpp"
+    "${COLORSYS_ENGINE_DIR}/analogous.cpp"
+    "${COLORSYS_ENGINE_DIR}/handler.cpp"
+    "${COLORSYS_ENGINE_DIR}/shade.cpp"
+    "${COLORSYS_ENGINE_DIR}/tint.cpp"
+    "${COLORSYS_ENGINE_DIR}/split_complementary.cpp"
+    "${COLORSYS_ENGINE_DIR}/square.cpp"
+    "${COLORSYS_ENGINE_DIR}/triadic.cpp"
+    "${COLORSYS_ENGINE_DIR}/temperature.cpp"
 )
 
 add_library(ir STATIC
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/rgb.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/cmy.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/cmyk.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/hsv.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ir/handler.cpp"
+    "${COLORSYS_CONVERTER_DIR}/rgb.cpp"
+    "${COLORSYS_CONVERTER_DIR}/cmy.cpp"
+    "${COLORSYS_CONVERTER_DIR}/cmyk.cpp"
+    "${COLORSYS_CONVERTER_DIR}/hsv.cpp"
+    "${COLORSYS_CONVERTER_DIR}/hwb.cpp"
+    "${COLORSYS_CONVERTER_DIR}/handler.cpp"
 )
 
 add_executable(colorsys "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
