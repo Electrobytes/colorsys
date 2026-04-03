@@ -31,32 +31,34 @@ namespace colorsys {
         t_hex = 2,
         t_hsl = 3,
         t_hsv = 4,
-        t_cmyk = 5
+        t_cmyk = 5,
+        t_hwb = 6
     };
 
     namespace hashmaps {
         inline const std::unordered_map<std::string, int> modes = {
-            {"convert", 0},
-            {"analogous", 1},
-            {"complementary", 2},
-            {"split_complementary", 3},
-            {"square", 4},
-            {"triadic", 5},
-            {"shade", 20},
-            {"tint", 21},
-            {"temp", 22},
-            {"temperature", 22},
-            {"colder", 220},
-            {"warmer", 221}
+            {"convert", m_convert},
+            {"analogous", m_analogous},
+            {"complementary", m_complementary},
+            {"split_complementary", m_split_complementary},
+            {"square", m_square},
+            {"triadic", m_triadic},
+            {"shade", m_shade},
+            {"tint", m_tint},
+            {"temp", m_temperature},
+            {"temperature", m_temperature},
+            {"colder", m_colder},
+            {"warmer", m_warmer}
         };
 
         inline const std::unordered_map<std::string, int> types = {
-            {"rgb", 0},
-            {"cmy", 1},
-            {"hex", 2},
-            {"hsl", 3},
-            {"hsv", 4},
-            {"cmyk", 5}
+            {"rgb", t_rgb},
+            {"cmy", t_cmy},
+            {"hex", t_hex},
+            {"hsl", t_hsl},
+            {"hsv", t_hsv},
+            {"cmyk", t_cmyk},
+            {"hwb", t_hwb}
         };
     }
 
