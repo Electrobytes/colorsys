@@ -6,9 +6,21 @@ Color Theory in the cmd!
 - Generate color harmonies (complementary, analogous, and etc.)
 - Adjust color mixtures (tint, shade, and etc.)
 
-## Usage
+## Table of Contents
+- [General Usage](#general-usage)
+-
+
+## General Usage
 ```
-colorsys <mode> "<color code>" -m <magnitude, intensity> -r <range> -i <input type> -o <output type>
+colorsys <mode> "<color code>" [-m <magnitude, intensity>] [-r <range>] -i <input type> -o <output type>
+```
+## Conversion
+```
+# Convert hsv value of cyan to hex
+colorsys convert "180, 100, 100" -i hsv -o hex
+
+# Convert rgb value of orange to cmyk
+
 ```
 
 ## Libraries used
