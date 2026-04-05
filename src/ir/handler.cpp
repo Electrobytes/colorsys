@@ -14,12 +14,18 @@ namespace colorsys {
                 break;
             case colorsys::t_cmy:
                 colorsys::intermediate::start::cmy(result);
+                break;
             case colorsys::t_cmyk:
                 colorsys::intermediate::start::cmyk(result);
+                break;
             case colorsys::t_hsl:
                 break; // Cuz hsl is the intermediate value
             case colorsys::t_hsv:
                 colorsys::intermediate::start::hsv(result);
+                break;
+            case colorsys::t_hwb:
+                colorsys::intermediate::start::hwb(result);
+                break;
                 
         }
 
@@ -35,14 +41,18 @@ namespace colorsys {
                     break;
                 case colorsys::t_cmy:
                     colorsys::intermediate::finish::cmy(vec);
+                    break;
                 case colorsys::t_cmyk:
                     colorsys::intermediate::finish::cmyk(vec);
+                    break;
                 case colorsys::t_hsl:
                     break; // Cuz the intermediate representation is already in hsl
                 case colorsys::t_hsv:
                     colorsys::intermediate::finish::hsv(vec);
                     break;
-
+                case colorsys::t_hwb:
+                    colorsys::intermediate::finish::hwb(vec);
+                    break;
             }
         }
 
