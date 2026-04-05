@@ -5,7 +5,7 @@ namespace colorsys::intermediate {
     namespace start {
         void hwb(std::vector<int>& convert) {
             convert.at(1) = 100 * (1 - convert.at(1) / (100 - convert.at(2)));
-            convert.at(2) -= 100;
+            convert.at(2) = 100 - convert.at(2); // 211, 99, 90
             colorsys::intermediate::start::hsv(convert);
         }
     }
@@ -13,8 +13,8 @@ namespace colorsys::intermediate {
     namespace finish {
         void hwb(std::vector<int>& convert) {
             colorsys::intermediate::finish::hsv(convert);
-            convert.at(1) = convert.at(2) - (convert.at(1) * convert.at(2) / 10);
-            convert.at(2) -= 100;
+            convert.at(1) = convert.at(2) - (convert.at(1) * convert.at(2) / 100);  
+            convert.at(2) = 100 - convert.at(2);
         }
     }
 }
