@@ -20,7 +20,7 @@ colorsys <mode> "<color code>" [-m <magnitude, intensity>] [-r <range>] -i <inpu
 colorsys convert "180, 100, 100" -i hsv -o hex
 
 # Convert rgb value of orange to cmyk
-
+colorsys convert "255, 165, 0" -i rgb -o cmyk
 ```
 
 ## Libraries used
