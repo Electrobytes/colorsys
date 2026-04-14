@@ -25,8 +25,10 @@ namespace colorsys {
 
         cxxopts::ParseResult result = programFlags.parse(argc, argv);
 
-        if (!result["help"].as<bool>()) return result;
-        std::cout << programFlags.help() << std::endl;
+        if (result["help"].count() >= 1) return result;
+        
+        const std::string_view selectedHelpPage = result["help"].as<std::string>();
+        if (selectedHelpPage == "general") std::cout << programFlags.help() << '\n';        
         std::exit(0);
         
     }
