@@ -3,7 +3,8 @@
 #include "tokenize.h"
 
 namespace colorsys {
-    std::vector<int> toIR(const std::vector<int>& origin, const int& inputType) {
+    std::vector<int> toHandler(const std::vector<int>& origin) {
+        colorsys::typeRef inputType = colorsys::ColorSettings::getConfig()->inputModel;
         std::vector<int> result = origin;
     
 
@@ -32,7 +33,8 @@ namespace colorsys {
         return result;
     }
 
-    void fromIR(std::vector<std::vector<int>>& origin, const int& outputType) {
+    void fromHandler(std::vector<std::vector<int>>& origin) {
+        colorsys::typeRef outputType = colorsys::ColorSettings::getConfig()->outputModel;
         for (std::vector<int>& vec : origin) {
             switch (outputType) {
                 case colorsys::t_rgb:

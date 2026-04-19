@@ -27,16 +27,17 @@ namespace colorsys {
         }
     }
 
-    void print(const std::vector<int>& inputColor, const std::vector<std::vector<int>>& outputColor, const std::vector<int>& tokens) {
+    void print(const std::vector<int>& inputColor, const std::vector<std::vector<int>>& outputColor) {
+        auto globalConfig = colorsys::ColorSettings::getConfig();
         std::array<std::string, 3> metadata {}; // mode, inputType, outputType
         for (const auto& [mode, value] : hashmaps::modes) {
-            if (value != tokens.at(0)) continue;
+            if (value != globalConfig->selectedMode) continue;
             metadata.at(0) = mode;
         }
 
         for (const auto& [type, value] : hashmaps::types) {
-            if (value == tokens.at(1)) metadata.at(1) = type;
-            if (value == tokens.at(2)) metadata.at(2) = type;
+            if (value == globalConfig->inputModel) metadata.at(1) = type;
+            if (value == globalConfig->outputModel) metadata.at(2) = type;
         }
 
         std::array<ftxui::Element, 5> formattedMetadata {};
@@ -44,11 +45,11 @@ namespace colorsys {
 
         
         for (const std::vector<int>& vectorIterator : outputColor) {
-            formattedOutputColor.push_back(ftxui::text(adaptiveFormat(vectorIterator, tokens.at(2))) | ftxui::border);
+            formattedOutputColor.push_back(ftxui::text(adaptiveFormat(vectorIterator, globalConfig->outputModel)) | ftxui::border);
         }
 
         formattedMetadata.at(0) = ftxui::text(metadata.at(0)); // Mode name
-        formattedMetadata.at(1) = ftxui::text(adaptiveFormat(inputColor, tokens.at(1)));
+        formattedMetadata.at(1) = ftxui::text(adaptiveFormat(inputColor, globalConfig->inputModel));
         formattedMetadata.at(2) = ftxui::hbox(formattedOutputColor);
         formattedMetadata.at(3) = ftxui::text(metadata.at(1));
         formattedMetadata.at(4) = ftxui::text(metadata.at(2));

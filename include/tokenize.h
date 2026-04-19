@@ -9,6 +9,7 @@
 #include <format>
 #include <cstdlib>
 #include <cxxopts.hpp>
+#include "colorsys.h"
 
 namespace colorsys {
     enum modeRef {
@@ -63,8 +64,9 @@ namespace colorsys {
     }
 
     // TODO: do heavy refactor with the return type
-    inline std::vector<int> argumentTokenize(const cxxopts::ParseResult& argumentResults) { 
+    inline void argumentTokenize(const cxxopts::ParseResult& argumentResults) { 
         std::vector<int> tokenizedResult {};
+        
         std::array<std::string, 3> enteredValues {};
         enteredValues.at(0) = argumentResults["mode"].as<std::string>();
         enteredValues.at(1) = argumentResults["inputModel"].as<std::string>();
@@ -103,8 +105,11 @@ namespace colorsys {
             std::exit(301);
         }
 
+        auto configResult = colorsys::ColorSettings::getConfig();
+        configResult->selectedMode = modeRef(tokenizedResult.at(0));
+        configResult->inputModel = typeRef(tokenizedResult.at(1));
+        configResult->outputModel = typeRef(tokenizedResult.at(2));
 
-        return tokenizedResult;
     }
 
 

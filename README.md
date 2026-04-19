@@ -21,13 +21,14 @@ colorsys <mode> "<color value>" [-m <magnitude, intensity>] [-r <range>] -i <inp
 - hsl
 - hwb
 - rgb
+- hex
 
 ### Available Functions
 - [Analogous](docs/analogous.md)
 - [Complementary](docs/complementary.md)
 - [Split Complementary](docs/split_complementary.md)
 - [Square](docs/square.md) 
-- Temperature
+- [Temperature](docs/temperature.md)
 - Tint
 - Triadic
 

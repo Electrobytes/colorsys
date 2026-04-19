@@ -5,10 +5,12 @@
 #include <optional>
 #include <regex>
 #include <algorithm>
+#include "colorsys.h"
 
 
 namespace colorsys {
-    std::vector<int> inputSanity(std::string colorInput, const int& inputType) {
+    std::vector<int> inputSanity(std::string colorInput) {
+        colorsys::typeRef inputType = colorsys::ColorSettings::getConfig()->inputModel;
         
         std::erase(colorInput, ' ');
         if (inputType == colorsys::t_hex) // skips the lowercase function if it's not a hex type

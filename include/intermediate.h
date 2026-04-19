@@ -6,9 +6,9 @@
 #include "tokenize.h"
 
 namespace colorsys {
-    std::vector<int> toIR(const std::vector<int>& origin, const int& inputType);
+    std::vector<int> toHandler(const std::vector<int>& origin);
 
-    void fromIR(std::vector<std::vector<int>>& origin, const int& outputType);
+    void fromHandler(std::vector<std::vector<int>>& origin);
 
     namespace intermediate::start {
         void rgb(std::vector<int>& convert);

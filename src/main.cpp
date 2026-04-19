@@ -8,6 +8,7 @@
 #include <cxxopts.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/screen.hpp>
+#include "colorsys.h"
 #include "options.h"
 #include "tokenize.h"
 #include "sanity.h"
@@ -21,17 +22,17 @@ int main(int argc, char** argv) {
     cxxopts::ParseResult argumentResult  = colorsys::programOptions(argc, argv);
 
     // Tokenize
-    std::vector<int> argumentTokens = colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel
+    colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel
 
     // Sanity check
-    std::vector<int> inputColor = colorsys::inputSanity(argumentResult["input"].as<std::string>(), argumentTokens.at(1));
+    std::vector<int> inputColor = colorsys::inputSanity(argumentResult["input"].as<std::string>());
     
-    std::vector<int> ColorIr = colorsys::toIR(inputColor, argumentTokens[1]);
+    std::vector<int> ColorIr = colorsys::toHandler(inputColor);
     int functionMagnitude = argumentResult["magnitude"].as<int>();
     int functionRange = argumentResult["range"].as<int>();
-    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(ColorIr, argumentTokens[0], functionMagnitude, functionRange);
-    colorsys::fromIR(outputColor, argumentTokens[2]);
-    colorsys::print(inputColor, outputColor, argumentTokens);
+    std::vector<std::vector<int>> outputColor = colorsys::engineHandler(ColorIr);
+    colorsys::fromHandler(outputColor);
+    colorsys::print(inputColor, outputColor);
     
     if (argumentResult["debug"].as<bool>()) {
         std::cout // Debug

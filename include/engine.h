@@ -17,5 +17,5 @@ namespace colorsys {
         std::vector<std::vector<int>> tint(const std::vector<int>& inputColor, int magnitude, int range);
         std::vector<std::vector<int>> temperature(const std::vector<int>& inputColor, int magnitude, int range);
     }
-    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues, const int& selectedMode, int magnitude, int range);
+    std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues);
 }
