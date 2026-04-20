@@ -5,8 +5,7 @@
 #include <optional>
 #include <regex>
 #include <algorithm>
-#include "colorsys.h"
-
+#include <tokenize.h>
 
 namespace colorsys {
     std::vector<int> inputSanity(std::string colorInput) {

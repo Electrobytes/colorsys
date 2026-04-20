@@ -8,7 +8,6 @@
 #include <cxxopts.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/screen.hpp>
-#include "colorsys.h"
 #include "options.h"
 #include "tokenize.h"
 #include "sanity.h"

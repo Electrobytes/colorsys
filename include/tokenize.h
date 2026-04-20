@@ -9,7 +9,6 @@
 #include <format>
 #include <cstdlib>
 #include <cxxopts.hpp>
-#include "colorsys.h"
 
 namespace colorsys {
     enum modeRef {
@@ -62,6 +61,28 @@ namespace colorsys {
             {"hwb", t_hwb}
         };
     }
+
+    struct ColorSettings {
+        colorsys::modeRef selectedMode;
+        colorsys::typeRef inputModel;
+        colorsys::typeRef outputModel;
+        int functionMagnitude;
+        int outputRange;   
+
+        inline static std::shared_ptr<ColorSettings> getConfig() {
+            if (globalConfig == nullptr) {
+                globalConfig = std::make_shared<ColorSettings>();
+            }
+
+            return globalConfig;
+        }
+
+        private:
+
+        static std::shared_ptr<ColorSettings> globalConfig;
+    };
+
+    inline std::shared_ptr<ColorSettings> ColorSettings::globalConfig = nullptr;
 
     // TODO: do heavy refactor with the return type
     inline void argumentTokenize(const cxxopts::ParseResult& argumentResults) { 
