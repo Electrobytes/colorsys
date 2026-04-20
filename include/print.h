@@ -2,6 +2,7 @@
 #include <vector>
 #include <array>
 #include <utility>
+#include <unordered_map>
 #include <fmt/core.h>
 #include <fmt/ranges.h>
 #include <ftxui/dom/elements.hpp>
@@ -40,19 +41,25 @@ namespace colorsys {
             if (value == globalConfig->outputModel) metadata.at(2) = type;
         }
 
-        std::array<ftxui::Element, 5> formattedMetadata {};
         ftxui::Elements formattedOutputColor {};
 
         
-        for (const std::vector<int>& vectorIterator : outputColor) {
-            formattedOutputColor.push_back(ftxui::text(adaptiveFormat(vectorIterator, globalConfig->outputModel)) | ftxui::border);
+        for (const std::vector<int>& vectorIterator : outputColor) {;
+            std::vector<int> outputDisplay(vectorIterator);
+            colorsys::intermediate::to::rgb(outputDisplay);
+            formattedOutputColor.push_back(ftxui::vbox({
+                ftxui::text(adaptiveFormat(vectorIterator, globalConfig->outputModel)) | ftxui::border,
+                ftxui::text(" ") | ftxui::bgcolor(ftxui::Color::RGB(outputDisplay[0], outputDisplay[1], outputDisplay[2])) | ftxui::border
+            }));
         }
 
-        formattedMetadata.at(0) = ftxui::text(metadata.at(0)); // Mode name
-        formattedMetadata.at(1) = ftxui::text(adaptiveFormat(inputColor, globalConfig->inputModel));
-        formattedMetadata.at(2) = ftxui::hbox(formattedOutputColor);
-        formattedMetadata.at(3) = ftxui::text(metadata.at(1));
-        formattedMetadata.at(4) = ftxui::text(metadata.at(2));
+        std::unordered_map<std::string_view, ftxui::Element> formattedMetadata {};
+        formattedMetadata["function"] = ftxui::text(metadata.at(0));
+        formattedMetadata["inputColor"] = ftxui::text(adaptiveFormat(inputColor, globalConfig->inputModel));
+        // formattedMetadata["inputPreview"] = ftxui::paragraph(" ") | ftxui::bgcolor()
+        formattedMetadata["outputColor"] = ftxui::hbox(formattedOutputColor);
+        formattedMetadata["inputType"] = ftxui::text(metadata.at(1));
+        formattedMetadata["outputType"] = ftxui::text(metadata.at(2));
 
         /*
         ftxui::Element document = ftxui::vbox({
@@ -67,13 +74,18 @@ namespace colorsys {
         */
 
         ftxui::Element document = ftxui::gridbox({
-            {ftxui::window(ftxui::text("Input"), formattedMetadata.at(1))},
-            {ftxui::window(ftxui::text("Function/Mode"), formattedMetadata.at(0))},
-            {ftxui::window(ftxui::text("Output/s"), formattedMetadata.at(2))},
-            {ftxui::window(ftxui::text("I/O types"), ftxui::hbox({
-                ftxui::window(ftxui::text("Input type"), formattedMetadata.at(3)),
-                ftxui::window(ftxui::text("Output type"), formattedMetadata.at(4))
-            }))}
+            {
+                ftxui::gridbox({
+                    {ftxui::window(ftxui::text("Input"), formattedMetadata["inputColor"])},
+                    {ftxui::window(ftxui::text("Function/Mode"), formattedMetadata["function"])}
+                }),
+                // ftxui::window(ftxui::text("Preview"), ftxui::text("Input (placeholder)"))
+            },
+                {ftxui::window(ftxui::text("Output(s)"), formattedMetadata["outputColor"])},
+                {ftxui::window(ftxui::text("Types"), ftxui::hbox({
+                    ftxui::window(ftxui::text("Input"), formattedMetadata["inputType"]),
+                    ftxui::window(ftxui::text("Output"), formattedMetadata["outputType"])
+                }))},
         });
 
         ftxui::Screen printer = ftxui::Screen::Create(ftxui::Dimension::Fit(document), ftxui::Dimension::Fit(document, true));

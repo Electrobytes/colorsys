@@ -6,11 +6,11 @@
 #include "tokenize.h"
 
 namespace colorsys {
-    std::vector<int> toHandler(const std::vector<int>& origin);
+    std::vector<int> toHsl(const std::vector<int>& origin);
 
-    void fromHandler(std::vector<std::vector<int>>& origin);
+    void fromHsl(std::vector<std::vector<int>>& origin);
 
-    namespace intermediate::start {
+    namespace intermediate::from {
         void rgb(std::vector<int>& convert);
         void cmy(std::vector<int>& convert);
         void cmyk(std::vector<int>& convert);
@@ -18,7 +18,7 @@ namespace colorsys {
         void hwb(std::vector<int>& convert);
     }
 
-    namespace intermediate::finish {
+    namespace intermediate::to {
         void rgb(std::vector<int>& convert);
         void cmy(std::vector<int>& convert);
         void cmyk(std::vector<int>& convert);

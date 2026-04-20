@@ -2,17 +2,17 @@
 
 // TODO: fix possible rounding issue here
 namespace colorsys::intermediate {
-    namespace start {
+    namespace from {
         void hwb(std::vector<int>& convert) {
             convert.at(1) = 100 * (1 - convert.at(1) / (100 - convert.at(2)));
             convert.at(2) = 100 - convert.at(2); // 211, 99, 90
-            colorsys::intermediate::start::hsv(convert);
+            colorsys::intermediate::from::hsv(convert);
         }
     }
 
-    namespace finish {
+    namespace to {
         void hwb(std::vector<int>& convert) {
-            colorsys::intermediate::finish::hsv(convert);
+            colorsys::intermediate::to::hsv(convert);
             convert.at(1) = convert.at(2) - (convert.at(1) * convert.at(2) / 100);  
             convert.at(2) = 100 - convert.at(2);
         }

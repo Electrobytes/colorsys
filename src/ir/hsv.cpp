@@ -2,7 +2,7 @@
 #include <cmath>
 
 namespace colorsys::intermediate {
-    namespace start {
+    namespace from {
         void hsv(std::vector<int>& convert) {
             int value = convert.at(2);
             convert.at(2) = (200 * value) - (convert.at(1) * value);
@@ -20,7 +20,7 @@ namespace colorsys::intermediate {
             }
         }
     }
-    namespace finish {
+    namespace to {
         void hsv(std::vector<int>& convert) {
             int lum = convert.at(2);
             convert.at(2) = lum + convert.at(1) * std::min(lum / 100.0, 1 - (lum / 100.0));

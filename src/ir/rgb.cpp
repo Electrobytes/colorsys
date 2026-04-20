@@ -5,7 +5,7 @@
 #include <iterator>
 
 namespace colorsys::intermediate {
-    namespace start {
+    namespace from {
         void rgb(std::vector<int>& convert) {
             std::vector<float> decimalRep(std::make_move_iterator(convert.begin()), std::make_move_iterator(convert.end()));
             convert.clear();
@@ -41,7 +41,7 @@ namespace colorsys::intermediate {
         }
     }
 
-    namespace finish {
+    namespace to {
         void rgb(std::vector<int>& convert) { 
             
             
