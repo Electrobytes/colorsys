@@ -1,4 +1,4 @@
-#include "intermediate.h"
+#include "conversion.h"
 
 // TODO: fix possible rounding issue here
 namespace colorsys::intermediate {

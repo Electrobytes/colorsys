@@ -1,5 +1,5 @@
 #include <vector>
-#include "intermediate.h"
+#include "conversion.h"
 #include "tokenize.h"
 
 namespace colorsys {

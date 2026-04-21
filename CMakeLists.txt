@@ -13,17 +13,17 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/out/lib")
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
 
-project(engine)
-project(ir)
-project(colorsys)
+project(colorsys_engine)
+project(colorsys_convert)
+project(colorsys_exec)
 
 find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
 
 set(COLORSYS_ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/engine")
-set(COLORSYS_CONVERTER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/ir")
+set(COLORSYS_CONVERT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/ir")
 
-add_library(engine STATIC
+add_library(colorsys_engine STATIC
     "${COLORSYS_ENGINE_DIR}/complementary.cpp"
     "${COLORSYS_ENGINE_DIR}/analogous.cpp"
     "${COLORSYS_ENGINE_DIR}/handler.cpp"
@@ -35,21 +35,21 @@ add_library(engine STATIC
     "${COLORSYS_ENGINE_DIR}/temperature.cpp"
 )
 
-add_library(ir STATIC
-    "${COLORSYS_CONVERTER_DIR}/rgb.cpp"
-    "${COLORSYS_CONVERTER_DIR}/cmy.cpp"
-    "${COLORSYS_CONVERTER_DIR}/cmyk.cpp"
-    "${COLORSYS_CONVERTER_DIR}/hsv.cpp"
-    "${COLORSYS_CONVERTER_DIR}/hwb.cpp"
-    "${COLORSYS_CONVERTER_DIR}/handler.cpp"
+add_library(colorsys_convert STATIC
+    "${COLORSYS_CONVERT_DIR}/rgb.cpp"
+    "${COLORSYS_CONVERT_DIR}/cmy.cpp"
+    "${COLORSYS_CONVERT_DIR}/cmyk.cpp"
+    "${COLORSYS_CONVERT_DIR}/hsv.cpp"
+    "${COLORSYS_CONVERT_DIR}/hwb.cpp"
+    "${COLORSYS_CONVERT_DIR}/handler.cpp"
 )
 
-add_executable(colorsys "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+add_executable(colorsys_exec "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 
-target_link_libraries(colorsys
+target_link_libraries(colorsys_exec
     ftxui::screen
     ftxui::dom
     fmt::fmt
-    engine
-    ir
+    colorsys_engine
+    colorsys_convert
 )

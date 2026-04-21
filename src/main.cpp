@@ -11,7 +11,7 @@
 #include "options.h"
 #include "tokenize.h"
 #include "sanity.h"
-#include "intermediate.h"
+#include "conversion.h"
 #include "engine.h"
 #include "print.h"
 
