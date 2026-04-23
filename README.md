@@ -48,8 +48,8 @@ colorsys convert "255, 165, 0" -i rgb -o cmyk
 
 ## Contributing
 Want to fix something or add a new feature? Feel free to make a Pull Request or simply an Issue. But first, read the following files so you'll know what and how to add.
-- CONTIBUTING.md
-- BUILD.md
+- [CONTIBUTING.md](CONTRIBUTING.md)
+- [BUILD.md](BUILD.md)
 
 ## License
 This project, Colorsys, and its contributions are licensed under the GPL-3.0 license. See [license](LICENSE) for more details.
