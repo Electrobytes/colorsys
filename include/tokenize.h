@@ -22,7 +22,8 @@ namespace colorsys {
         m_tint = 21,
         m_temperature = 22,
         m_colder = 220,
-        m_warmer = 221
+        m_warmer = 221,
+        m_tetradic = 23
     };
 
     enum typeRef {
@@ -48,7 +49,8 @@ namespace colorsys {
             {"temp", m_temperature},
             {"temperature", m_temperature},
             {"colder", m_colder},
-            {"warmer", m_warmer}
+            {"warmer", m_warmer},
+            {"tetradic", m_tetradic}
         };
 
         inline const std::unordered_map<std::string, int> types = {

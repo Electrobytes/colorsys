@@ -15,7 +15,7 @@ include_directories("${CMAKE_SOURCE_DIR}/include")
 
 project(colorsys_engine)
 project(colorsys_convert)
-project(colorsys_exec)
+project(colorsys)
 
 find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
@@ -33,6 +33,7 @@ add_library(colorsys_engine STATIC
     "${COLORSYS_ENGINE_DIR}/square.cpp"
     "${COLORSYS_ENGINE_DIR}/triadic.cpp"
     "${COLORSYS_ENGINE_DIR}/temperature.cpp"
+    "${COLORSYS_ENGINE_DIR}/tetradic.cpp"
 )
 
 add_library(colorsys_convert STATIC
@@ -44,9 +45,9 @@ add_library(colorsys_convert STATIC
     "${COLORSYS_CONVERT_DIR}/handler.cpp"
 )
 
-add_executable(colorsys_exec "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+add_executable(colorsys "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 
-target_link_libraries(colorsys_exec
+target_link_libraries(colorsys
     ftxui::screen
     ftxui::dom
     fmt::fmt

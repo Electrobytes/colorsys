@@ -35,6 +35,9 @@ namespace colorsys {
             case colorsys::m_colder:
             case colorsys::m_temperature:
                 return engine::temperature(intermediateValues, globalConfig->functionMagnitude, globalConfig->outputRange);
+
+            case colorsys::m_tetradic:
+                return engine::tetradic(intermediateValues, globalConfig->functionMagnitude);
         }
 
         std::cerr << "The function used is not yet implemented :(\n";

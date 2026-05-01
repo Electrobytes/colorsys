@@ -16,6 +16,7 @@ namespace colorsys {
         std::vector<std::vector<int>> triadic(const std::vector<int>& inputColor);
         std::vector<std::vector<int>> tint(const std::vector<int>& inputColor, int magnitude, int range);
         std::vector<std::vector<int>> temperature(const std::vector<int>& inputColor, int magnitude, int range);
+        std::vector<std::vector<int>> tetradic(const std::vector<int>& inputColor, int magnitude);
     }
     std::vector<std::vector<int>> engineHandler(const std::vector<int>& intermediateValues);
 }
