@@ -35,6 +35,7 @@ colorsys <mode> "<color value>" [-m <magnitude, intensity>] [-r <range>] -i <inp
 - [Temperature](docs/temperature.md)
 - Tint
 - Triadic
+- Shade
 
 ## Conversion 🔁
 ```
