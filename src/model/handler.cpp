@@ -29,7 +29,8 @@ namespace colorsys {
                 break;
                 
         }
-
+        
+        colorsys::DisplayableColor::getSingleton()->captureInput(result);
         return result;
     }
 
@@ -57,6 +58,8 @@ namespace colorsys {
                     break;
             }
         }
+        
+       
 
     }
 }
