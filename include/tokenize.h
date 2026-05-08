@@ -8,7 +8,6 @@
 #include <unordered_map>
 #include <format>
 #include <cstdlib>
-#include <ftxui/screen/color.hpp>
 #include <cxxopts.hpp>
 
 namespace colorsys {
@@ -87,46 +86,7 @@ namespace colorsys {
 
     inline std::shared_ptr<ColorSettings> ColorSettings::globalConfig {};
 
-    struct DisplayableColor {
-
-        inline static std::shared_ptr<DisplayableColor> getSingleton() {
-            if (globalDisplay ==  nullptr) {
-                globalDisplay = std::make_shared<DisplayableColor>();
-            }
-
-            return globalDisplay;
-        }
-
-        void captureInput(std::vector<int> hslInput) {
-            colorsys::intermediate::to::rgb(hslInput);
-            this->displayableInput = hslInput;
-        }
-
-        void captureOutput(std::vector<int> hslOutput) {
-            colorsys::intermediate::to::rgb(hslOutput);
-            this->displayableOutput = hslOutput;
-        }
-
-        ftxui::Color displayInput() {
-            // return ftxui::Color(displayableOutput.at(colorPosition::red), displayableOutput.at(colorPosition::green), displayableOutput.at(colorPosition::blue));
-        }
-
-        private:
-
-        enum class colorPosition : int {
-            red = 0,
-            green,
-            blue
-        };
-
-        std::vector<int> displayableInput {};
-        std::vector<int> displayableOutput {};
-
-        static std::shared_ptr<DisplayableColor> globalDisplay;
-    };
-
-    inline std::shared_ptr<DisplayableColor> DisplayableColor::globalDisplay = {};
-
+    
     inline void argumentTokenize(const cxxopts::ParseResult& argumentResults) { 
         std::vector<int> tokenizedResult {};
         

@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <ftxui/screen/color.hpp>
 #include "tokenize.h"
 
 namespace colorsys {
@@ -25,4 +26,33 @@ namespace colorsys {
         void hsv(std::vector<int>& convert);
         void hwb(std::vector<int>& convert);
     }
+
+    struct DisplayableColor {
+
+        inline static std::shared_ptr<DisplayableColor> getSingleton();
+
+        void captureInput(std::vector<int> hslInput);
+
+        void captureOutput(std::vector<int> hslOutput);
+
+        ftxui::Color displayInput();
+
+        ftxui::Color displayOutput();
+
+        private:
+
+        enum class colorPosition : int {
+            red = 0,
+            green,
+            blue
+        };
+
+        void commonCapture(ftxui::Color& displayColor, std::vector<int>& hslVector);
+
+        ftxui::Color displayableInput;
+        ftxui::Color displayableOutput;
+
+        static std::shared_ptr<DisplayableColor> globalDisplay;
+    };
+
 }

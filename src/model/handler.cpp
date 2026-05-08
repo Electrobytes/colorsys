@@ -57,9 +57,48 @@ namespace colorsys {
                     colorsys::intermediate::to::hwb(vec);
                     break;
             }
-        }
-        
-       
+        } 
 
     }
+
+        inline std::shared_ptr<DisplayableColor> DisplayableColor::getSingleton() {
+            if (globalDisplay ==  nullptr) {
+                globalDisplay = std::make_shared<DisplayableColor>();
+            }
+
+            return globalDisplay;
+        }
+
+        void DisplayableColor::captureInput(std::vector<int> hslInput) {
+            commonCapture(this->displayableInput, hslInput);
+        }
+
+        void DisplayableColor::captureOutput(std::vector<int> hslOutput) {
+            commonCapture(this->displayableInput, hslOutput);
+        }
+
+        ftxui::Color DisplayableColor::displayInput() {
+            return displayableInput;
+        }
+
+        ftxui::Color DisplayableColor::displayOutput() {
+            return displayableOutput;
+        }
+
+
+        void DisplayableColor::commonCapture(ftxui::Color& displayColor, std::vector<int>& hslVector) {
+            colorsys::intermediate::to::rgb(hslVector);
+
+            auto getElementbyEnum = [&hslVector](const colorPosition& index) -> int {
+                return hslVector.at(static_cast<int>(index));
+            };
+
+            displayColor = ftxui::Color(
+                getElementbyEnum(colorPosition::red),
+                getElementbyEnum(colorPosition::green),
+                getElementbyEnum(colorPosition::blue)
+            );
+        }
+    inline std::shared_ptr<DisplayableColor> DisplayableColor::globalDisplay = {};
+
 }
