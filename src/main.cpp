@@ -27,8 +27,6 @@ int main(int argc, char** argv) {
     std::vector<int> inputColor = colorsys::inputSanity(argumentResult["input"].as<std::string>());
     
     std::vector<int> ColorIr = colorsys::toHsl(inputColor);
-    int functionMagnitude = argumentResult["magnitude"].as<int>();
-    int functionRange = argumentResult["range"].as<int>();
     std::vector<std::vector<int>> outputColor = colorsys::engineHandler(ColorIr);
     colorsys::fromHsl(outputColor);
     colorsys::print(inputColor, outputColor);
