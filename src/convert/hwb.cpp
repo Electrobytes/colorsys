@@ -1,6 +1,5 @@
-#include "conversion.h"
+#include "convert.h"
 
-// TODO: fix possible rounding issue here
 namespace colorsys::intermediate {
     namespace from {
         void hwb(std::vector<int>& convert) {

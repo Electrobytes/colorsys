@@ -11,19 +11,15 @@
 #include "options.h"
 #include "tokenize.h"
 #include "sanity.h"
-#include "conversion.h"
+#include "convert.h"
 #include "engine.h"
 #include "print.h"
 
 int main(int argc, char** argv) {
 
-    // Parser
     cxxopts::ParseResult argumentResult  = colorsys::programOptions(argc, argv);
 
-    // Tokenize
-    colorsys::argumentTokenize(argumentResult); // mode, inputModel, outputModel
 
-    // Sanity check
     std::vector<int> inputColor = colorsys::inputSanity(argumentResult["input"].as<std::string>());
     
     std::vector<int> ColorIr = colorsys::toHsl(inputColor);
@@ -39,8 +35,7 @@ int main(int argc, char** argv) {
             << "\ni = " << argumentResult["inputModel"].as<std::string>()
             << "\no = " << argumentResult["outputModel"].as<std::string>()
             << std::endl;
-    }        
-
+    }
 
     return 0;
 }

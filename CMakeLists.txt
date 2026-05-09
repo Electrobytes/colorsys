@@ -21,7 +21,7 @@ find_package(ftxui REQUIRED)
 find_package(fmt REQUIRED)
 
 set(COLORSYS_ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/engine")
-set(COLORSYS_CONVERT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/model")
+set(COLORSYS_CONVERT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/convert")
 
 add_library(colorsys_engine STATIC
     "${COLORSYS_ENGINE_DIR}/complementary.cpp"
